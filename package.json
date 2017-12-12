@@ -1,0 +1,24 @@
+{
+  "name": "n-ice",
+  "version": "1.0.0",
+  "description": "no... not ice",
+  "main": "index.js",
+  "dependencies": {
+    "ajiax": "^1.0.1",
+    "cheerio": "^1.0.0-rc.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yi-love/n-ice.git"
+  },
+  "author": "Yi-love",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yi-love/n-ice/issues"
+  },
+  "homepage": "https://github.com/Yi-love/n-ice#readme"
+}
