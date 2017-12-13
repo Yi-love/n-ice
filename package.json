@@ -1,6 +1,6 @@
 {
   "name": "n-ice",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "no... not ice",
   "main": "index.js",
   "dependencies": {
