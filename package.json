@@ -4,7 +4,7 @@
   "description": "no... not ice",
   "main": "index.js",
   "dependencies": {
-    "ajiax": "^1.0.1",
+    "ajiax": "git+https://github.com/Yi-love/ajiax.git",
     "cheerio": "^1.0.0-rc.2"
   },
   "devDependencies": {},
