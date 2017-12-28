@@ -1,5 +1,5 @@
 # N-ice
-no.... not ice.
+Get stock information from etnet.
 
 
 ```js

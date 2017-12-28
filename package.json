@@ -1,7 +1,7 @@
 {
   "name": "n-ice",
-  "version": "1.0.1",
-  "description": "no... not ice",
+  "version": "1.0.2",
+  "description": "get stock information from etnet.",
   "main": "index.js",
   "dependencies": {
     "ajiax": "git+https://github.com/Yi-love/ajiax.git",

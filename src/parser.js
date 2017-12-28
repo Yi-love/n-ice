@@ -4,6 +4,8 @@ const { URL } = require('url');
 
 const cheerio = require('cheerio');
 
+const { ICE_URL_DEFAULT } = require('./config');
+
 function checkData( $ ){
     let boxDom = $('#ipoColumnBlock');
     return boxDom ? true : false;
@@ -15,9 +17,10 @@ function getInformation( $ ) {
     try{
         let informationArr = $('.figureTable'); 
         let baseArr = informationArr.eq(0).find('tr');
-
-        let companyUrl = baseArr.eq(2).find('a').eq(0).attr('href').trim();
-                
+        let companyUrl = ICE_URL_DEFAULT;
+        if ( baseArr.eq(2).find('a').length > 0 ){
+            companyUrl = baseArr.eq(2).find('a').eq(0).attr('href').trim();
+        }
         let lotSize = baseArr.eq(3).find('.TableNumBlack').eq(0).text().trim();
 
         let stockArr = informationArr.eq(1).find('tr');
