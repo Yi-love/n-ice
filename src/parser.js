@@ -73,4 +73,4 @@ exports.parse = ( html = '' )=>{
     }
     let result = getInformation($);
     return result.perfect ? getPerfectInformation(result) : result;
-}
+};

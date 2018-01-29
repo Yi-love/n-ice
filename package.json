@@ -1,6 +1,6 @@
 {
   "name": "n-ice",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "get stock information from etnet.",
   "main": "index.js",
   "dependencies": {
