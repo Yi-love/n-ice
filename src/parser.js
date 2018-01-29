@@ -12,7 +12,6 @@ function checkData( $ ){
 }
 
 function getInformation( $ ) {
-    let perfect = 1;
     let data = {};
     try{
         let informationArr = $('.figureTable'); 
@@ -25,19 +24,18 @@ function getInformation( $ ) {
 
         let stockArr = informationArr.eq(1).find('tr');
 
-        let price = stockArr.eq(3).find('.TableNumBlack').eq(0).text().trim();
+        let price = stockArr.length >= 4 ? stockArr.eq(3).find('.TableNumBlack').eq(0).text().trim() : '0';
 
-        let timeArr = informationArr.eq(2).find('.TableNumBlack');
-
-        let ipoTime = timeArr.eq(0).text().trim();
-        let publishTime = timeArr.eq(2).text().trim();
-        let boardTime = timeArr.eq(4).text().trim();
+        let timeArr = informationArr.length >= 3 ? informationArr.eq(2).find('.TableNumBlack') : [];
+        let ipoTime = timeArr.length ? timeArr.eq(0).text().trim() : '';
+        let publishTime = timeArr.length >= 3 ? timeArr.eq(timeArr.length !== 5 ? timeArr.length -2 : 2).text().trim() : '';
+        let boardTime = timeArr.length >= 3 ? timeArr.eq(timeArr.length !== 5 ? timeArr.length - 1 : 4).text().trim() : '';
 
         data = { companyUrl, lotSize , price , ipoTime , publishTime , boardTime };
     }catch(e){
-        perfect = 0;
+        return {perfect: 0 , message:e}
     }
-    return {perfect , data};
+    return {perfect：1 , data};
 }
 
 function getPerfectInformation(result){
@@ -48,21 +46,21 @@ function getPerfectInformation(result){
         information.lotSize = Math.round(+(('' + data.lotSize).replace(/[^0-9]/g , '')));
         information.price = ('' + data.price).replace(/[^0-9.,]/g , ' ').replace(/\s+/g,' ').replace(/,/g , '').trim().split(' ');
         information.price[0] = +information.price[0];
-        information.price[1] = +information.price[1];
+        information.price[1] = information.price.length >= 2 ? +information.price[1] : information.price[0];
 
-        information.ipoTime = data.ipoTime.match(/(\d+年\s*)?\d+月\s*\d+日\s*/g);
+        information.ipoTime = data.ipoTime.match(/(\d+年\s*)?\d+月\s*\d+日\s*/g) || ['',''];
         information.ipoTime = {
             startTime: ('' + information.ipoTime[0]).replace(/[^0-9]/g , ' ').replace(/\s+/g,' ').trim().split(' '),
             endTime: ('' + information.ipoTime[1]).replace(/[^0-9]/g , ' ').replace(/\s+/g,' ').trim().split(' ')
         }
 
-        information.publishTime = data.publishTime.match(/(\d+年\s*)?\d+月\s*\d+日\s*/g)[0];
+        information.publishTime = data.publishTime.match(/(\d+年\s*)?\d+月\s*\d+日\s*/g)[0] || '';
         information.publishTime = information.publishTime.replace(/[^0-9]/g , ' ').replace(/\s+/g,' ').trim().split(' ');
 
-        information.boardTime = data.boardTime.match(/(\d+年\s*)?\d+月\s*\d+日\s*/g)[0];
+        information.boardTime = data.boardTime.match(/(\d+年\s*)?\d+月\s*\d+日\s*/g)[0] || '';
         information.boardTime = information.boardTime.replace(/[^0-9]/g , ' ').replace(/\s+/g,' ').trim().split(' ');
     }catch(e){
-        return {perfect:0};
+        return {perfect:0 , message:e};
     }
     return {perfect:1 , data:information};
 }
@@ -71,8 +69,8 @@ exports.parse = ( html = '' )=>{
     const $ = cheerio.load(html);
 
     if ( !checkData($) ){
-        return {perfect: 0}
+        return {perfect: 0 , message:'no information.'};
     }
     let result = getInformation($);
-    return getPerfectInformation(result);
+    return result.perfect ? getPerfectInformation(result) : result;
 }
