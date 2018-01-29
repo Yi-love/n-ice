@@ -35,7 +35,7 @@ function getInformation( $ ) {
     }catch(e){
         return {perfect: 0 , message:e}
     }
-    return {perfect：1 , data};
+    return {perfect: 1 , data};
 }
 
 function getPerfectInformation(result){
