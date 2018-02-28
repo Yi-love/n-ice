@@ -1,6 +1,6 @@
 {
   "name": "@cray/n-ice",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "get stock information from etnet.",
   "main": "index.js",
   "dependencies": {
