@@ -3,7 +3,7 @@ Get stock information from etnet.
 
 
 ```js
-const ice = require('n-ice');
+const ice = require('@cray/n-ice');
 
 ice('03878').then((result)=>{
     console.log('result: ' , result);

@@ -1,10 +1,10 @@
 {
-  "name": "n-ice",
-  "version": "1.0.5",
+  "name": "@cray/n-ice",
+  "version": "1.0.6",
   "description": "get stock information from etnet.",
   "main": "index.js",
   "dependencies": {
-    "ajiax": "git+https://github.com/Yi-love/ajiax.git#v1.0.2",
+    "@cray/ajiax": "^1.0.3",
     "cheerio": "^1.0.0-rc.2"
   },
   "devDependencies": {},
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Yi-love/n-ice/issues"
   },
-  "homepage": "https://github.com/Yi-love/n-ice#readme"
+  "homepage": "https://github.com/Yi-love/n-ice#readme",
+  "directories": {
+    "test": "test"
+  }
 }
